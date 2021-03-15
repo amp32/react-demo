@@ -1,33 +1,23 @@
-import './App.css';
-import HeaderWelcome from './Header';
-import { useState, useEffect } from "react";
+import ContactCard from'./ContactCard';
 
 function App() {
-  const [name, setName] = useState("Mayur");  // react hooks
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(json => setUsers(json))
-  },
-    []); // [] means run once
-
-  function switchUser() {
-    name === "Mayur" ? setName("Yash") : setName("Mayur");
-  }
-
-  // components and props
   return (
-    <div className="App">
-      <HeaderWelcome title={name} />
-      <p>Welcome to My Blog!</p>
-      <button onClick={(e) => switchUser()}>Switch</button>
-      <hr />
-      <ul>
-        {users.map((user) =>
-          <li key={user.id}>{user.name}</li>)}
-      </ul>
+    <div className="contacts">
+            <ContactCard 
+                contact={["Mr. Whiskerson", "http://placekitten.com/300/200", "(212) 555-1234", "mr.whiskaz@catnap.meow"]}
+            />
+            
+            <ContactCard 
+                contact={["Fluffykins", "http://placekitten.com/400/200", "(212) 555-2345", "fluff@me.com"]}
+            />
+            
+            <ContactCard
+                contact={["Destroyer", "http://placekitten.com/400/300", "(212) 555-3456", "ofworlds@yahoo.com"]}
+            />
+            
+            <ContactCard 
+                contact={["Felix", "http://placekitten.com/200/100", "(212) 555-4567", "thecat@hotmail.com"]}
+            />
     </div>
   );
 }
